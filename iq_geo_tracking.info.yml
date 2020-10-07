@@ -1,0 +1,7 @@
+name: iqual GEO Tracking Module
+description: Track users from a certain geographic region in the front-end.
+package: Custom
+type: module
+core: 8.x
+dependencies:
+  - drupal:smart_ip

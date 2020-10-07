@@ -1,0 +1,16 @@
+id: geo_tracking_resource_get
+plugin_id: geo_tracking_resource_get
+status: true
+dependencies:
+  module:
+    - iq_geo_tracking
+    - serialization
+    - user
+granularity: resource
+configuration:
+  methods:
+    - GET
+  formats:
+    - json
+  authentication:
+    - cookie
