@@ -37,9 +37,6 @@ class GeoTrackingResource extends ResourceBase {
     } else {
       // Geolocate visitor
 
-      // Block Smart IP from storing a current user's location
-      \Drupal\smart_ip\SmartIp::setSession('smart_ip_user_share_location_permitted', FALSE);
-
       /** @var \Drupal\smart_ip\SmartIpLocation $location */
       $location = \Drupal::service('smart_ip.smart_ip_location');
 
@@ -56,6 +53,15 @@ class GeoTrackingResource extends ResourceBase {
 
         $response = [FALSE];
       }
+
+      // Remove smart_ip data from user
+      $location->delete();
+  
+      // Remove smart_ip data from Drupal session
+      // Prevents creation of session for anonymous visitors
+      $request = \Drupal::request();
+      $session = $request->getSession();
+      $session->remove('smart_ip');
     }
 
     return new ResourceResponse($response);
