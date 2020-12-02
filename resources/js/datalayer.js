@@ -20,7 +20,17 @@
                       if (data && data[0] == true) {
                         window.dataLayer = window.dataLayer || [];
                         window.dataLayer.push({"event": "iq_gt_allowed"});
-                      }
+
+                        if (typeof $.cookie('iq_gt') === 'undefined') {
+                          $.cookie('iq_gt', '1', {path: '/'});
+                        }
+
+                      } else if (data && data[0] == false) {
+                        if (typeof $.cookie('iq_gt') === 'undefined') {
+                          $.cookie('iq_gt', '-1', {path: '/'});
+                        }
+                        
+                      } else {}
                     }
                   });
             }
