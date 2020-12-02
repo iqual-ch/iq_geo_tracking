@@ -25,11 +25,13 @@
                           $.cookie('iq_gt', '1', {path: '/'});
                         }
 
+                        window.dispatchEvent(new Event('iq_geo_tracking_allowed'));
                       } else if (data && data[0] == false) {
                         if (typeof $.cookie('iq_gt') === 'undefined') {
                           $.cookie('iq_gt', '-1', {path: '/'});
                         }
                         
+                        window.dispatchEvent(new Event('iq_geo_tracking_disallowed'));
                       } else {}
                     }
                   });
