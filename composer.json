@@ -9,7 +9,6 @@
       }
     ],
     "require": {
-      "drupal/smart_ip":"*"
+      "drupal/smart_ip":"^4.2"
     }
   }
-  
