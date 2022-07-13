@@ -1,4 +1,4 @@
-# Geo Tracking LimitModule
+# Geo Tracking Limit Module
 
 This module adds the capability to only track visitors from a certain geographic location (Switzerland) with the Google Tag Manager. It sets a cookie (`gtl`) and fires a dataLayer event (`gtl_allowed`) when a trackable user is first identified.
 
