@@ -1,5 +1,5 @@
 <?php
-namespace Drupal\iq_geo_tracking\Plugin\rest\resource;
+namespace Drupal\geo_tracking_limit\Plugin\rest\resource;
 
 use Drupal\rest\Plugin\ResourceBase;
 use Drupal\rest\ResourceResponse;
@@ -9,7 +9,7 @@ use Drupal\rest\ResourceResponse;
  *
  * @RestResource(
  *   id = "geo_tracking_resource_get",
- *   label = @Translation("GEO Tracking Resource"),
+ *   label = @Translation("Geo Tracking Resource"),
  *   uri_paths = {
  *      "canonical" = "/tracking/check"
  *   }
@@ -28,8 +28,8 @@ class GeoTrackingResource extends ResourceBase {
     $cookies = \Drupal::request()->cookies;
     
     // Only check geolocation if a cookie is not present
-    if ($cookies->has('iq_gt')) {
-      if ($cookies->get('iq_gt') > 0) {
+    if ($cookies->has('gtl')) {
+      if ($cookies->get('gtl') > 0) {
         $response = [TRUE];
       } else {
         $response = [FALSE];
@@ -40,7 +40,7 @@ class GeoTrackingResource extends ResourceBase {
       /** @var \Drupal\smart_ip\SmartIpLocation $location */
       $location = \Drupal::service('smart_ip.smart_ip_location');
 
-      // \Drupal::logger('iq_geo_tracking')->notice('Smart IP Country: ' . $location->get('countryCode'));
+      // \Drupal::logger('geo_tracking_limit')->notice('Smart IP Country: ' . $location->get('countryCode'));
 
       if ($location->get('countryCode') == 'CH') {
         // Set a cookie for trackable visitors
@@ -71,7 +71,7 @@ class GeoTrackingResource extends ResourceBase {
    * Sets the geo tracking cookie
    */
   protected function setGeoTrackingCookie($value) {
-    setcookie('iq_gt', $value, [
+    setcookie('gtl', $value, [
       'expires' => 0,
       'path' => '/',
       'domain' => "." . str_replace("www.", "", \Drupal::request()->getHost()),

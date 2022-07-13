@@ -1,5 +1,5 @@
 {
-    "name": "iqual/iq_geo_tracking",
+    "name": "drupal/geo_tracking_limit",
     "description": "Track visitors from a certain geographic region in the front-end.",
     "type": "drupal-custom-module",
     "repositories": [

@@ -1,6 +1,6 @@
-# iqual Geo Tracking Module
+# Geo Tracking LimitModule
 
-This module adds the capability to only track visitors from a certain geographic location (Switzerland) with the Google Tag Manager. It sets a cookie (`iq_gt`) and fires a dataLayer event (`iq_gt_allowed`) when a trackable user is first identified.
+This module adds the capability to only track visitors from a certain geographic location (Switzerland) with the Google Tag Manager. It sets a cookie (`gtl`) and fires a dataLayer event (`gtl_allowed`) when a trackable user is first identified.
 
 ## Dependecies
 
@@ -19,7 +19,7 @@ This module adds the capability to only track visitors from a certain geographic
 
 ## Google Tag Manager Setup
 
-1. Create a first-party cookie variable for the cookie name `iq_gt`
-2. Create a custom event trigger for the event name `iq_gt_allowed`
+1. Create a first-party cookie variable for the cookie name `gtl`
+2. Create a custom event trigger for the event name `gtl_allowed`
 3. Add the first-party cookie to existing triggers as a condition so that the trigger is only fired if the cookie value matches `1`. Apply this to all triggers that are only allowed to fire for trackable visitors. (e.g. PDF link clicks)
 3. Add the custom event trigger to existing tags that only fire once per page visit. (e.g. Google Analytics pageview)

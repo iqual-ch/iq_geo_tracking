@@ -1,13 +1,13 @@
 (function ($, Drupal, drupalSettings) {
-    Drupal.behaviors.iqGeoTracking = {
+    Drupal.behaviors.GeoTrackingLimit = {
       attach: function attach(context, settings) {
-        if (drupalSettings.iq_geo_tracking && drupalSettings.iq_geo_tracking.check == true) {
+        if (drupalSettings.geo_tracking_limit && drupalSettings.geo_tracking_limit.check == true) {
 
-            if (typeof $.cookie('iq_gt') === 'undefined') {
+            if (typeof $.cookie('gtl') === 'undefined') {
                 var checkUrl = "/tracking/check?_format=json";
 
-                if (drupalSettings.iq_geo_tracking.baseUrl) {
-                    checkUrl = drupalSettings.iq_geo_tracking.baseUrl + checkUrl;
+                if (drupalSettings.geo_tracking_limit.baseUrl) {
+                    checkUrl = drupalSettings.geo_tracking_limit.baseUrl + checkUrl;
                 }
 
                 $.ajax({
@@ -19,19 +19,19 @@
                     success: function(data, status, xhr) {
                       if (data && data[0] == true) {
                         window.dataLayer = window.dataLayer || [];
-                        window.dataLayer.push({"event": "iq_gt_allowed"});
+                        window.dataLayer.push({"event": "gtl_allowed"});
 
-                        if (typeof $.cookie('iq_gt') === 'undefined') {
-                          $.cookie('iq_gt', '1', {path: '/'});
+                        if (typeof $.cookie('gtl') === 'undefined') {
+                          $.cookie('gtl', '1', {path: '/'});
                         }
 
-                        window.dispatchEvent(new Event('iq_geo_tracking_allowed'));
+                        window.dispatchEvent(new Event('geo_tracking_limit_allowed'));
                       } else if (data && data[0] == false) {
-                        if (typeof $.cookie('iq_gt') === 'undefined') {
-                          $.cookie('iq_gt', '-1', {path: '/'});
+                        if (typeof $.cookie('gtl') === 'undefined') {
+                          $.cookie('gtl', '-1', {path: '/'});
                         }
                         
-                        window.dispatchEvent(new Event('iq_geo_tracking_disallowed'));
+                        window.dispatchEvent(new Event('geo_tracking_limit_disallowed'));
                       } else {}
                     }
                   });

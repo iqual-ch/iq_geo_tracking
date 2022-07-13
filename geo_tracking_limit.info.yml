@@ -1,4 +1,4 @@
-name: iqual GEO Tracking Module
+name: Geo Tracking Limit Module
 description: Track users from a certain geographic region in the front-end.
 package: Custom
 type: module

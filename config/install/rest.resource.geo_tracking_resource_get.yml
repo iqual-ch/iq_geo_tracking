@@ -3,7 +3,7 @@ plugin_id: geo_tracking_resource_get
 status: true
 dependencies:
   module:
-    - iq_geo_tracking
+    - geo_tracking_limit
     - serialization
     - user
 granularity: resource
