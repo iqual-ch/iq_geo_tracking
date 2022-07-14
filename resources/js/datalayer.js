@@ -1,13 +1,13 @@
 (function ($, Drupal, drupalSettings) {
     Drupal.behaviors.GeoTrackingLimit = {
       attach: function attach(context, settings) {
-        if (drupalSettings.geo_tracking_limit && drupalSettings.geo_tracking_limit.check == true) {
+        if (drupalSettings.gtl && drupalSettings.gtl.check == true) {
 
             if (typeof $.cookie('gtl') === 'undefined') {
                 var checkUrl = "/tracking/check?_format=json";
 
-                if (drupalSettings.geo_tracking_limit.baseUrl) {
-                    checkUrl = drupalSettings.geo_tracking_limit.baseUrl + checkUrl;
+                if (drupalSettings.gtl.baseUrl) {
+                    checkUrl = drupalSettings.gtl.baseUrl + checkUrl;
                 }
 
                 $.ajax({
@@ -25,13 +25,13 @@
                           $.cookie('gtl', '1', {path: '/'});
                         }
 
-                        window.dispatchEvent(new Event('geo_tracking_limit_allowed'));
+                        window.dispatchEvent(new Event('gtl_allowed'));
                       } else if (data && data[0] == false) {
                         if (typeof $.cookie('gtl') === 'undefined') {
                           $.cookie('gtl', '-1', {path: '/'});
                         }
                         
-                        window.dispatchEvent(new Event('geo_tracking_limit_disallowed'));
+                        window.dispatchEvent(new Event('gtl_disallowed'));
                       } else {}
                     }
                   });

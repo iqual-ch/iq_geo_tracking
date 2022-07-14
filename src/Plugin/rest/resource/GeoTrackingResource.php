@@ -1,5 +1,5 @@
 <?php
-namespace Drupal\geo_tracking_limit\Plugin\rest\resource;
+namespace Drupal\gtl\Plugin\rest\resource;
 
 use Drupal\rest\Plugin\ResourceBase;
 use Drupal\rest\ResourceResponse;
@@ -40,7 +40,7 @@ class GeoTrackingResource extends ResourceBase {
       /** @var \Drupal\smart_ip\SmartIpLocation $location */
       $location = \Drupal::service('smart_ip.smart_ip_location');
 
-      // \Drupal::logger('geo_tracking_limit')->notice('Smart IP Country: ' . $location->get('countryCode'));
+      // \Drupal::logger('gtl')->notice('Smart IP Country: ' . $location->get('countryCode'));
 
       if ($location->get('countryCode') == 'CH') {
         // Set a cookie for trackable visitors
