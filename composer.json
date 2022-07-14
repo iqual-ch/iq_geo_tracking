@@ -1,7 +1,7 @@
 {
     "name": "drupal/gtl",
     "description": "Track visitors from a certain geographic region in the front-end.",
-    "type": "drupal-custom-module",
+    "type": "drupal-module",
     "repositories": [
       {
         "type": "composer",
